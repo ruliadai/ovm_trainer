@@ -1,0 +1,94 @@
+wandb_version: 1
+
+model_name:
+  desc: null
+  value: ruliad/ovm-base-m-2
+run_id:
+  desc: null
+  value: a081add3-c884-420b-95bd-917e1d4f762c
+date:
+  desc: null
+  value: 2024-04-12-02_27_46_PM
+dataset_size:
+  desc: null
+  value: 900
+dataset:
+  desc: null
+  value: data/train.jsonl
+validation:
+  desc: null
+  value: data/validation.jsonl
+weight_decay:
+  desc: null
+  value: 0.0
+clip_gradients:
+  desc: null
+  value: true
+learning_rate:
+  desc: null
+  value: 2.0e-05
+shuffle:
+  desc: null
+  value: true
+seed:
+  desc: null
+  value: 877645
+disable_dropout:
+  desc: null
+  value: false
+use_multipack_sampler:
+  desc: null
+  value: false
+train_on_inputs:
+  desc: null
+  value: false
+epochs:
+  desc: null
+  value: 3
+acc_steps:
+  desc: null
+  value: 0
+batch_size:
+  desc: null
+  value: 1
+total_batch_size:
+  desc: null
+  value: 8
+scheduler_type:
+  desc: null
+  value: cosine
+_wandb:
+  desc: null
+  value:
+    python_version: 3.8.10
+    cli_version: 0.16.6
+    framework: huggingface
+    huggingface_version: 4.39.0
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    start_time: 1712932102.0
+    t:
+      1:
+      - 1
+      - 11
+      - 49
+      - 51
+      - 55
+      - 71
+      2:
+      - 1
+      - 11
+      - 49
+      - 51
+      - 55
+      - 71
+      3:
+      - 13
+      - 16
+      - 23
+      4: 3.8.10
+      5: 0.16.6
+      6: 4.39.0
+      8:
+      - 5
+      13: linux-x86_64

@@ -1,0 +1,1 @@
+{"current_loss": 0.42578125, "current_epoch": 3.0, "learning_rate": 0.0, "grad_norm": 334.0, "_timestamp": 1712949353.5513618, "_runtime": 731.0014827251434, "_step": 47, "val_loss": 0.5340160727500916, "_wandb": {"runtime": 788}}
