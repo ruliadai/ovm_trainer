@@ -4,10 +4,10 @@ import random
 random.seed(42)
 dataset_repo_id = "ruliad/math_value_net_experiment_data-2"
 dataset = load_dataset(dataset_repo_id)['train']
-dataset = dataset.select(range(1000))
+# dataset = dataset.select(range(1000))
 num_rows = dataset.num_rows
 print(f"Number of rows: {num_rows}")
-validation_ratio = 0.1
+validation_ratio = 0.001
 dataset = dataset.shuffle()
 num_validation_samples = int(num_rows * validation_ratio)
 train_size = int((1-validation_ratio) * num_rows)
@@ -36,7 +36,7 @@ def is_valid_json(json_example):
         return False
 
 # Save the train dataset in JSONL format
-with open("data/train.jsonl", "w") as f:
+with open("/fsx/ovm/data/train.jsonl", "w") as f:
     for example in train_dataset:
         json_example = {"input": example["input"], "label": example["label"]}
         if is_valid_json(json_example):
@@ -46,7 +46,7 @@ with open("data/train.jsonl", "w") as f:
             print(f"Skipping invalid JSON line: {example}")
 
 # Save the validation dataset in JSONL format
-with open("data/validation.jsonl", "w") as f:
+with open("/fsx/ovm/data/validation.jsonl", "w") as f:
     for example in val_dataset:
         json_example = {"input": example["input"], "label": example["label"]}
         if is_valid_json(json_example):
