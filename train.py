@@ -312,7 +312,7 @@ if __name__ == "__main__":
 
     # model_name = "mistralai/Mistral-7B-v0.1"
     model_name = "ruliad/ovm-base-m-3"
-    model_name = "fsx/ovm/meta-llama/Meta-Llama-3-8B"
+    model_name = "fsx/ovm/Meta-Llama-3-8B"
 
     scheduler_type = "cosine"
     seed = 877645  # set your seed
