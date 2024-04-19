@@ -23,6 +23,7 @@ from torch.distributed.fsdp.wrap import (
     transformer_auto_wrap_policy,
 )
 from transformers.models.mistral.modeling_mistral import MistralDecoderLayer
+from transformers.models.llama.modeling_llama import LlamaDecoderLayer
 from core.multipack_sampler import MultipackDistributedBatchSampler
 # from dotenv import load_dotenv
 import functools
@@ -57,7 +58,7 @@ def setup_model(model_name, max_length):
     )
 
     from transformers import AutoModelForSequenceClassification
-    from modeling_ovm import MistralForSequenceClassification
+    from modeling_ovm import MistralLForSequenceClassification
     model =  AutoModelForSequenceClassification.from_pretrained(
             pretrained_model_name_or_path=model_name,
             num_labels=1,
@@ -311,6 +312,7 @@ if __name__ == "__main__":
 
     # model_name = "mistralai/Mistral-7B-v0.1"
     model_name = "ruliad/ovm-base-m-3"
+    model_name = "meta-llama/Meta-Llama-3-8B"
 
     scheduler_type = "cosine"
     seed = 877645  # set your seed
@@ -319,7 +321,7 @@ if __name__ == "__main__":
     run_id = str(uuid.uuid4())
     output_dir = f"./outputs/{model_name}/{run_id}"
     date_of_run = datetime.now().strftime("%Y-%m-%d-%I_%M_%S_%p")
-    max_length = 4196  # adjust as needed
+    max_length = 8192  # adjust as needed
     disable_dropout = False
     gradient_checkpointing = True
     clip_gradients = True
@@ -328,7 +330,7 @@ if __name__ == "__main__":
     validation_batch_size = 1  # adjust as needed
     epochs = 3  # adjust as needed
     acc_steps = 0  # TODO: not implemented here yet
-    lr = 2e-06  # adjust as needed
+    lr = 1e-06  # adjust as needed
     weight_decay = 0.0  # adjust as needed
     gradient_clipping = 1.0  # adjust as needed
     train_on_inputs = False  # whether to train on instruction tokens
@@ -341,7 +343,8 @@ if __name__ == "__main__":
     auto_wrap_policy = functools.partial(
         transformer_auto_wrap_policy,
         transformer_layer_cls={
-            MistralDecoderLayer,
+            # MistralDecoderLayer,
+            LlamaDecoderLayer
         },
     )
     from torch.distributed.fsdp.api import BackwardPrefetch, CPUOffload, ShardingStrategy
