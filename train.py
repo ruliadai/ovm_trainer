@@ -312,7 +312,7 @@ if __name__ == "__main__":
 
     # model_name = "mistralai/Mistral-7B-v0.1"
     model_name = "ruliad/ovm-base-m-3"
-    model_name = "meta-llama/Meta-Llama-3-8B"
+    model_name = "fsx/ovm/meta-llama/Meta-Llama-3-8B"
 
     scheduler_type = "cosine"
     seed = 877645  # set your seed
@@ -371,8 +371,8 @@ if __name__ == "__main__":
     optimizer = get_optimizer(model, lr, weight_decay)
 
 
-    train_ds = ["data/train.jsonl"]
-    val_ds = ["data/validation.jsonl"]
+    train_ds = ["/fsx/ovm/data/train.jsonl"]
+    val_ds = ["/fsx/ovm/data/validation.jsonl"]
     train_dataset = SupervisedDataset(train_on_inputs, tokenizer, train_ds)
     val_dataset = SupervisedDataset(train_on_inputs, tokenizer, val_ds)
     collator = DataCollatorForSupervisedDataset(tokenizer)
